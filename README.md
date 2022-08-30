@@ -1,4 +1,4 @@
-# Webpack React Typescript starter
+# t008
 
 ## What`s inside?
 

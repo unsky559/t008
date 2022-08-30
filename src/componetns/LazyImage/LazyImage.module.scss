@@ -1,0 +1,31 @@
+.imageContainer{
+  width: 500px;
+  height: 500px;
+}
+
+.imageLoading{
+  animation-name: loading;
+  animation-direction: alternate-reverse;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  background-color: gray;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes loading {
+  0%{
+  opacity: 0.2;
+  }
+  100%{
+    opacity: 0.3;
+  }
+}
+
+.image{
+  width: inherit;
+  height: inherit;
+  object-fit: cover;
+}
