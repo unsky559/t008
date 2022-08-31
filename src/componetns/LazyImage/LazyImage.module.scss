@@ -15,6 +15,14 @@
   justify-content: center;
 }
 
+.imageError{
+  background-color: darkred;
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @keyframes loading {
   0%{
   opacity: 0.2;
