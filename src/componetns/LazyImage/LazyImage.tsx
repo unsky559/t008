@@ -1,14 +1,28 @@
-import React from 'react';
-import loadWithTwoEvens from './loadWithTwoEvens';
-import style from "./LazyImage.module.scss";
+import React, { ReactElement, useEffect } from 'react';
+import style from './LazyImage.module.scss';
+import useFetch from '../../hooks/useFetch';
+import randomService from '../../API/randomService';
 
 type propsType = {
-  url: string,
-  isLoading: boolean
+  url: string
 }
 
-const LazyImage = (props: propsType) => {
-  if (props.isLoading) {
+const LazyImage = (props: propsType): ReactElement => {
+  const [fetchRandoms, isLoading, error] = useFetch(() => randomService.awaitTwoEven());
+
+  useEffect(() => {
+    fetchRandoms().then();
+  }, []);
+
+  if (error) {
+    return (
+      <div className={`${style.imageContainer} ${style.imageError}`}>
+        <h1>Cannot access the Server</h1>
+      </div>
+    );
+  }
+
+  if (isLoading) {
     return (
       <div className={`${style.imageContainer} ${style.imageLoading}`}>
         <h1>Picking the right numbers...</h1>
@@ -23,4 +37,4 @@ const LazyImage = (props: propsType) => {
   );
 };
 
-export default loadWithTwoEvens(LazyImage);
+export default LazyImage;
